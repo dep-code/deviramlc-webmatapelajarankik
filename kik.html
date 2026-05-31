@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KIK Portfolio — Devira Meireditha</title>
+  <link rel="stylesheet" href="kik.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://font5s.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&family=Nunito:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+<!-- ── Custom Cursor ── -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring-sm"></div>
+<div id="cursor-ring-md"></div>
+<div id="cursor-ring-lg"></div>
+
+<!-- ══════════════════════════════════════════════
+     INTRO SCREEN
+══════════════════════════════════════════════ -->
+<div id="intro-screen">
+  <div class="intro-smoke"></div>
+  <div class="intro-smoke intro-smoke--2"></div>
+  <div class="intro-smoke intro-smoke--3"></div>
+  <img src="makota.png" alt="" class="intro-ornament--top" onerror="this.style.display='none'"/>
+  <div class="intro-center">
+    <div class="intro-subtitle-top">KIK</div>
+    <div class="intro-divider">
+      <svg width="220" height="18" viewBox="0 0 220 18" fill="none">
+        <path d="M0 9 Q55 2 110 9 Q165 16 220 9" stroke="rgba(212,175,122,0.8)" stroke-width="1.2" fill="none"/>
+        <circle cx="110" cy="9" r="3" fill="rgba(212,175,122,0.9)"/>
+        <circle cx="55" cy="6" r="1.5" fill="rgba(212,175,122,0.6)"/>
+        <circle cx="165" cy="12" r="1.5" fill="rgba(212,175,122,0.6)"/>
+      </svg>
+    </div>
+    <div class="intro-title">Kreativitas, Inovasi, &amp; Kewirausahaan</div>
+  </div>
+  <div class="intro-loader-wrap">
+    <div class="intro-loader-track">
+      <div class="intro-loader-fill" id="loader-fill">
+        <div class="intro-loader-glow"></div>
+      </div>
+    </div>
+    <span class="intro-loader-pct" id="loader-pct">0%</span>
+  </div>
+</div>
+
+<!-- ── Char Intro ── -->
+<div id="char-intro-wrap">
+  <canvas id="rope-canvas-intro"></canvas>
+  <img src="CML-removebg-preview.png" alt="" id="char-intro" onerror="this.src='cml.png'"/>
+</div>
+
+<!-- ── Page Pull Overlay ── -->
+<div id="page-pull-overlay">
+  <div id="page-pull-sheet"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MAIN SITE
+══════════════════════════════════════════════ -->
+<div id="main-site" class="hidden">
+
+  <!-- Night Sky -->
+  <div id="night-sky" class="hidden">
+    <canvas id="stars-canvas"></canvas>
+    <div id="moon-wrap">
+      <div class="moon-crescent">
+        <div class="moon-inner"></div>
+        <div class="moon-glow"></div>
+      </div>
+    </div>
+    <div id="night-particles"></div>
+  </div>
+
+  <!-- Day Sky -->
+  <div id="day-sky" class="hidden">
+    <div id="sun-wrap">
+      <div class="sun"><div class="sun-rays"></div><div class="sun-glow"></div></div>
+    </div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <!-- ── Header ── -->
+  <header id="site-header">
+    <div class="header-inner">
+      <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="logo-wrap">
+        <div class="logo-text">KIK</div>
+        <div class="logo-glow"></div>
+      </div>
+      <nav class="header-nav">
+        <a href="#home"      class="nav-item"><i data-lucide="home"       class="nav-icon"></i><span>Home</span></a>
+        <a href="#tentang"   class="nav-item"><i data-lucide="book-open"  class="nav-icon"></i><span>Tentang KIK</span></a>
+        <a href="#penugasan" class="nav-item"><i data-lucide="clipboard"  class="nav-icon"></i><span>Penugasan</span></a>
+        <a href="#evaluasi"  class="nav-item"><i data-lucide="bar-chart-2"class="nav-icon"></i><span>Evaluasi</span></a>
+        <a href="#target"    class="nav-item"><i data-lucide="target"     class="nav-icon"></i><span>Target</span></a>
+        <a href="#progres"   class="nav-item"><i data-lucide="trending-up"class="nav-icon"></i><span>Progres</span></a>
+      </nav>
+      <div class="lamp-wrap" id="lamp-wrap">
+        <div class="lamp-rope-container"><canvas id="lamp-rope-canvas"></canvas></div>
+        <div class="lamp-body" id="lamp-body">
+          <img src="lamp.png" alt="lamp" class="lamp-img"/>
+          <div class="lamp-glow"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Sidebar ── -->
+  <div id="sidebar-overlay"></div>
+  <aside id="sidebar">
+    <button class="sidebar-close" id="sidebar-close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="sidebar-logo">KIK</div>
+    <nav class="sidebar-nav">
+      <button class="sidebar-item" id="btn-findme"><i data-lucide="map-pin" class="nav-icon"></i><span>Find Me</span></button>
+    </nav>
+  </aside>
+
+  <!-- ── Char Lamp ── -->
+  <div id="char-lamp-wrap">
+    <canvas id="rope-canvas-lamp"></canvas>
+    <img src="CML-removebg-preview.png" alt="" id="char-lamp" onerror="this.src='cml.png'"/>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       HOME SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="section-home" id="home">
+    <div class="home-bg-wrap">
+      <img src="f.png" alt="" class="home-bg-real-img"/>
+      <div class="home-bg-top-overlay"></div>
+      <canvas class="home-night-canvas" id="home-night-canvas"></canvas>
+      <div class="home-day-overlay">
+        <div class="home-sun-wrap"><div class="home-sun"><div class="home-sun-rays"></div></div></div>
+        <div class="home-cloud home-cloud-1"></div>
+        <div class="home-cloud home-cloud-2"></div>
+        <div class="home-cloud home-cloud-3"></div>
+      </div>
+      <canvas id="home-pixel-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;opacity:0;transition:opacity 1.2s;"></canvas>
+      <div id="home-particles" style="position:absolute;inset:0;pointer-events:none;z-index:5;"></div>
+
+      <div class="home-name-block">
+        <h1 class="home-fullname">Devira Meireditha Luis Cahyani</h1>
+        <div class="home-nickname-wrap">
+          <span class="home-nickname-label">Call me</span>
+          <span class="home-nickname" id="home-nickname">Devira</span>
+        </div>
+        <p class="home-tagline">
+          "Designing Worlds With A Young Mind And Big Vision."
+          <span class="home-tagline-id">Merancang dunia dengan pikiran muda dan visi besar.</span>
+        </p>
+        <p class="home-desc">
+          Hii, guyss!! Saya merupakan seorang pelajar di <strong>SMK Negeri 7 Semarang</strong>
+          jurusan <strong>Sistem Informasi, Jaringan, dan Aplikasi (SIJA)</strong> yang memiliki
+          ambisi besar untuk meraih kesuksesan dan terus mengembangkan potensi diri.
+          In the future, saya berharap dapat menjadi seorang wirausahawan muda yang dikenal luas,
+          sekaligus mengoleksi banyak pengalaman berharga dalam hidup saya.
+        </p>
+        <div class="home-info-cards">
+          <div class="home-info-card"><span class="hic-icon">👤</span><div><div class="hic-label">Nama</div><div class="hic-val">Devira Meireditha L.C.</div></div></div>
+          <div class="home-info-card"><span class="hic-icon">🔢</span><div><div class="hic-label">Presensi</div><div class="hic-val">15</div></div></div>
+          <div class="home-info-card"><span class="hic-icon">🏫</span><div><div class="hic-label">Kelas</div><div class="hic-val">XI SIJA 3</div></div></div>
+          <div class="home-info-card"><span class="hic-icon">🏛️</span><div><div class="hic-label">Sekolah</div><div class="hic-val">SMK Negeri 7 Semarang</div></div></div>
+        </div>
+        <div class="home-btns">
+          <a href="#tentang"   class="home-btn-main">🚀 Jelajahi Website</a>
+          <a href="#penugasan" class="home-btn-outline">📋 Lihat Tugas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TENTANG KIK
+  ══════════════════════════════════════════════ -->
+  <section id="tentang" class="section-tentang">
+    <div class="section-content">
+      <div class="section-label reveal-up">Mata Pelajaran</div>
+      <h2 class="section-title reveal-up">Apa Itu <span class="title-accent">KIK?</span></h2>
+      <div class="tentang-grid">
+        <div class="tentang-text reveal-up">
+          <div class="guru-card">
+            <span class="guru-icon">👩‍🏫</span>
+            <div>
+              <div class="guru-label">Guru Pengampu</div>
+              <div class="guru-name">Bu Yulia Diana</div>
+            </div>
+          </div>
+          <p>Mata pelajaran <strong>KIK</strong> atau singkatan dari <strong>Kreativitas, Inovasi, dan Kewirausahaan</strong> merupakan suatu kegiatan yang memiliki kemampuan, kemahiran, dan keterampilan dengan inovasi tinggi untuk membuat, menciptakan, dan menghasilkan suatu jasa, barang/produk, juga penemuan/sesuatu yang baru, berbeda, kreatif, bermanfaat, memiliki nilai tambah, serta dapat mendatangkan kesempatan yang memunculkan peluang usaha sehingga bisa dijual dan mencapai tujuan.</p>
+          <blockquote class="tentang-quote">"Kreativitas adalah kunci membuka pintu peluang yang tak terbatas."</blockquote>
+        </div>
+        <div class="tentang-cards">
+          <div class="kik-pillar reveal-up" style="--delay:0.05s">
+            <div class="kp-icon">🎨</div>
+            <h3>Kreativitas</h3>
+            <p>Kemampuan menghasilkan ide-ide baru yang orisinal, unik, dan bernilai tinggi dalam dunia usaha.</p>
+          </div>
+          <div class="kik-pillar reveal-up" style="--delay:0.12s">
+            <div class="kp-icon">💡</div>
+            <h3>Inovasi</h3>
+            <p>Proses mengubah ide kreatif menjadi produk, layanan, atau solusi nyata yang berdampak positif.</p>
+          </div>
+          <div class="kik-pillar reveal-up" style="--delay:0.19s">
+            <div class="kp-icon">🚀</div>
+            <h3>Kewirausahaan</h3>
+            <p>Kemampuan membangun, mengelola, dan mengembangkan usaha dengan penuh keberanian dan visi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PENUGASAN
+  ══════════════════════════════════════════════ -->
+  <section id="penugasan" class="section-penugasan section-alt">
+    <div class="section-content">
+      <div class="section-label reveal-up">Penugasan</div>
+      <h2 class="section-title reveal-up">Tugas <span class="title-accent">KIK</span></h2>
+      <div class="tugas-grid">
+
+        <!-- BAB 1 -->
+        <div class="tugas-card reveal-up" style="--delay:0s">
+          <div class="tc-num">01</div>
+          <div class="tc-icon">�</div>
+          <span class="tc-badge">BAB 1</span>
+          <h3 class="tc-title">Strategi Pemasaran</h3>
+          <p class="tc-desc">Mempelajari dan menyusun strategi pemasaran produk/jasa usaha agar dapat menjangkau target pasar secara efektif.</p>
+          <div class="tc-tags"><span>Pemasaran</span><span>Strategi</span><span>Bisnis</span></div>
+          <div class="tc-footer">
+            <span class="tc-status status-done">✓ Selesai</span>
+            <div class="tc-btns">
+              <a class="tc-btn-detail"
+                 href="https://drive.google.com/drive/folders/1bRVXSbrkz-_gN8cipp7vaka6JxzwwGJK?usp=drive_link"
+                 target="_blank" rel="noopener">
+                📂 Lihat Tugas
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAB 2 -->
+        <div class="tugas-card reveal-up" style="--delay:0.08s">
+          <div class="tc-num">02</div>
+          <div class="tc-icon">🏢</div>
+          <span class="tc-badge">BAB 2</span>
+          <h3 class="tc-title">Badan Usaha</h3>
+          <p class="tc-desc">Memahami berbagai bentuk badan usaha, struktur organisasi, dan dasar hukum pendirian usaha di Indonesia.</p>
+          <div class="tc-tags"><span>Badan Usaha</span><span>Organisasi</span><span>Hukum</span></div>
+          <div class="tc-footer">
+            <span class="tc-status status-done">✓ Selesai</span>
+            <div class="tc-btns">
+              <a class="tc-btn-detail"
+                 href="https://drive.google.com/drive/folders/1te2FwY7jcb6M_0xjV0e_I6BIKwB1-Mnq?usp=drive_link"
+                 target="_blank" rel="noopener">
+                📂 Lihat Tugas
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAB 3 -->
+        <div class="tugas-card reveal-up" style="--delay:0.16s">
+          <div class="tc-num">03</div>
+          <div class="tc-icon">�</div>
+          <span class="tc-badge">BAB 3</span>
+          <h3 class="tc-title">Proposal Usaha</h3>
+          <p class="tc-desc">Menyusun proposal usaha yang lengkap mencakup latar belakang, analisis pasar, rencana keuangan, dan strategi pengembangan.</p>
+          <div class="tc-tags"><span>Proposal</span><span>Rencana</span><span>Usaha</span></div>
+          <div class="tc-footer">
+            <span class="tc-status status-done">✓ Selesai</span>
+            <div class="tc-btns">
+              <a class="tc-btn-detail"
+                 href="https://drive.google.com/drive/folders/1kS7armoxsamusluRSkacFHrYbOU7efD8?usp=drive_link"
+                 target="_blank" rel="noopener">
+                📂 Lihat Tugas
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       EVALUASI DIRI
+  ══════════════════════════════════════════════ -->
+  <section id="evaluasi" class="section-evaluasi">
+    <div class="section-content">
+      <div class="section-label reveal-up">Refleksi</div>
+      <h2 class="section-title reveal-up">Evaluasi <span class="title-accent">Diri</span></h2>
+      <div class="evaluasi-grid">
+        <div class="evaluasi-list">
+          <div class="eval-item reveal-up" style="--delay:0.05s">
+            <div class="eval-num">01</div>
+            <div class="eval-body">
+              <p>Kurang menguasai sepenuhnya dasar pelajaran yang diajarkan.</p>
+              <div class="eval-bar-wrap"><div class="eval-bar" data-w="45"></div><span class="eval-pct">45%</span></div>
+            </div>
+          </div>
+          <div class="eval-item reveal-up" style="--delay:0.10s">
+            <div class="eval-num">02</div>
+            <div class="eval-body">
+              <p>Mampu menemukan ide usaha sederhana.</p>
+              <div class="eval-bar-wrap"><div class="eval-bar" data-w="70"></div><span class="eval-pct">70%</span></div>
+            </div>
+          </div>
+          <div class="eval-item reveal-up" style="--delay:0.15s">
+            <div class="eval-num">03</div>
+            <div class="eval-body">
+              <p>Belum cukup aktif dalam kegiatan tanya jawab.</p>
+              <div class="eval-bar-wrap"><div class="eval-bar" data-w="40"></div><span class="eval-pct">40%</span></div>
+            </div>
+          </div>
+          <div class="eval-item reveal-up" style="--delay:0.20s">
+            <div class="eval-num">04</div>
+            <div class="eval-body">
+              <p>Masih perlu meningkatkan keberanian menyampaikan pendapat.</p>
+              <div class="eval-bar-wrap"><div class="eval-bar" data-w="35"></div><span class="eval-pct">35%</span></div>
+            </div>
+          </div>
+          <div class="eval-item reveal-up" style="--delay:0.25s">
+            <div class="eval-num">05</div>
+            <div class="eval-body">
+              <p>Pengembangan ide belum maksimal dan masih perlu pendalaman.</p>
+              <div class="eval-bar-wrap"><div class="eval-bar" data-w="50"></div><span class="eval-pct">50%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="evaluasi-summary reveal-up" style="--delay:0.1s">
+          <div class="eval-summary-card">
+            <div class="esc-title">Statistik Evaluasi</div>
+            <div class="esc-ring-wrap">
+              <svg viewBox="0 0 120 120" class="esc-svg">
+                <defs>
+                  <linearGradient id="evalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f2a7bb"/>
+                    <stop offset="100%" stop-color="#d4607a"/>
+                  </linearGradient>
+                </defs>
+                <circle class="esc-bg"   cx="60" cy="60" r="50"/>
+                <circle class="esc-fill" cx="60" cy="60" r="50" id="esc-circle"/>
+              </svg>
+              <div class="esc-center">
+                <span class="esc-pct" id="esc-pct">0</span>
+                <span class="esc-label">Rata-rata</span>
+              </div>
+            </div>
+            <div class="esc-legend">
+              <div class="esc-leg-item"><span class="esc-dot" style="background:#f2a7bb"></span>Penguasaan Materi<span class="esc-leg-val">45%</span></div>
+              <div class="esc-leg-item"><span class="esc-dot" style="background:#e8849c"></span>Ide Usaha<span class="esc-leg-val">70%</span></div>
+              <div class="esc-leg-item"><span class="esc-dot" style="background:#9ca3af"></span>Keaktifan<span class="esc-leg-val">40%</span></div>
+              <div class="esc-leg-item"><span class="esc-dot" style="background:#d4607a"></span>Keberanian<span class="esc-leg-val">35%</span></div>
+              <div class="esc-leg-item"><span class="esc-dot" style="background:#c084a0"></span>Pengembangan Ide<span class="esc-leg-val">50%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TARGET PENGEMBANGAN
+  ══════════════════════════════════════════════ -->
+  <section id="target" class="section-target section-alt">
+    <div class="section-content">
+      <div class="section-label reveal-up">Roadmap</div>
+      <h2 class="section-title reveal-up">Target <span class="title-accent">Pengembangan</span></h2>
+      <div class="roadmap-wrap">
+        <div class="roadmap-line"></div>
+        <div class="roadmap-item rm-left reveal-up"  style="--delay:0.05s"><div class="rm-dot">01</div><div class="rm-card"><div class="rm-icon">🗣️</div><h3>Aktif &amp; Percaya Diri</h3><p>Lebih aktif dan percaya diri dalam pembelajaran, baik ketika tanya jawab maupun presentasi.</p><span class="rm-tag">Komunikasi</span></div></div>
+        <div class="roadmap-item rm-right reveal-up" style="--delay:0.10s"><div class="rm-dot">02</div><div class="rm-card"><div class="rm-icon">💡</div><h3>Ide Kreatif &amp; Inovatif</h3><p>Mampu mengembangkan ide usaha yang lebih kreatif dan inovatif.</p><span class="rm-tag">Kreativitas</span></div></div>
+        <div class="roadmap-item rm-left reveal-up"  style="--delay:0.15s"><div class="rm-dot">03</div><div class="rm-card"><div class="rm-icon">⏰</div><h3>Disiplin &amp; Konsisten</h3><p>Lebih disiplin dan konsisten dalam mengerjakan tugas.</p><span class="rm-tag">Disiplin</span></div></div>
+        <div class="roadmap-item rm-right reveal-up" style="--delay:0.20s"><div class="rm-dot">04</div><div class="rm-card"><div class="rm-icon">🎤</div><h3>Berani Berpendapat</h3><p>Berani menyampaikan ide dan pendapat saat presentasi.</p><span class="rm-tag">Public Speaking</span></div></div>
+        <div class="roadmap-item rm-left reveal-up"  style="--delay:0.25s"><div class="rm-dot">05</div><div class="rm-card"><div class="rm-icon">📚</div><h3>Kuasai Materi</h3><p>Menguasai lebih dalam materi yang telah diajarkan.</p><span class="rm-tag">Akademik</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROGRES WIRAUSAHA
+  ══════════════════════════════════════════════ -->
+  <section id="progres" class="section-progres">
+    <div class="section-content">
+      <div class="section-label reveal-up">Dashboard</div>
+      <h2 class="section-title reveal-up">Progres <span class="title-accent">Wirausaha</span></h2>
+      <div class="progres-grid">
+        <div class="progres-bars reveal-up">
+          <div class="pb-item"><div class="pb-head"><span>🧠 Mindset Entrepreneur</span><span class="pb-pct">75%</span></div><div class="pb-track"><div class="pb-fill" data-w="75"></div></div></div>
+          <div class="pb-item"><div class="pb-head"><span>🎨 Kreativitas</span><span class="pb-pct">85%</span></div><div class="pb-track"><div class="pb-fill" data-w="85"></div></div></div>
+          <div class="pb-item"><div class="pb-head"><span>💡 Inovasi</span><span class="pb-pct">80%</span></div><div class="pb-track"><div class="pb-fill" data-w="80"></div></div></div>
+          <div class="pb-item"><div class="pb-head"><span>💪 Kepercayaan Diri</span><span class="pb-pct">65%</span></div><div class="pb-track"><div class="pb-fill" data-w="65"></div></div></div>
+          <div class="pb-item"><div class="pb-head"><span>🎤 Public Speaking</span><span class="pb-pct">60%</span></div><div class="pb-track"><div class="pb-fill" data-w="60"></div></div></div>
+          <div class="pb-item"><div class="pb-head"><span>🚀 Pengembangan Ide Bisnis</span><span class="pb-pct">70%</span></div><div class="pb-track"><div class="pb-fill" data-w="70"></div></div></div>
+          <div class="pb-item"><div class="pb-head"><span>⏰ Disiplin</span><span class="pb-pct">78%</span></div><div class="pb-track"><div class="pb-fill" data-w="78"></div></div></div>
+        </div>
+        <div class="progres-circles reveal-up" style="--delay:0.1s">
+          <div class="pc-grid">
+            <div class="pc-item"><div class="pc-ring"><svg viewBox="0 0 80 80"><circle class="pcr-bg" cx="40" cy="40" r="32"/><circle class="pcr-fill" cx="40" cy="40" r="32" data-pct="75"/></svg><span class="pc-num" data-target="75">0</span></div><div class="pc-label">Mindset</div></div>
+            <div class="pc-item"><div class="pc-ring"><svg viewBox="0 0 80 80"><circle class="pcr-bg" cx="40" cy="40" r="32"/><circle class="pcr-fill" cx="40" cy="40" r="32" data-pct="85"/></svg><span class="pc-num" data-target="85">0</span></div><div class="pc-label">Kreativitas</div></div>
+            <div class="pc-item"><div class="pc-ring"><svg viewBox="0 0 80 80"><circle class="pcr-bg" cx="40" cy="40" r="32"/><circle class="pcr-fill" cx="40" cy="40" r="32" data-pct="80"/></svg><span class="pc-num" data-target="80">0</span></div><div class="pc-label">Inovasi</div></div>
+            <div class="pc-item"><div class="pc-ring"><svg viewBox="0 0 80 80"><circle class="pcr-bg" cx="40" cy="40" r="32"/><circle class="pcr-fill" cx="40" cy="40" r="32" data-pct="65"/></svg><span class="pc-num" data-target="65">0</span></div><div class="pc-label">Kepercayaan</div></div>
+            <div class="pc-item"><div class="pc-ring"><svg viewBox="0 0 80 80"><circle class="pcr-bg" cx="40" cy="40" r="32"/><circle class="pcr-fill" cx="40" cy="40" r="32" data-pct="60"/></svg><span class="pc-num" data-target="60">0</span></div><div class="pc-label">Public Speaking</div></div>
+            <div class="pc-item"><div class="pc-ring"><svg viewBox="0 0 80 80"><circle class="pcr-bg" cx="40" cy="40" r="32"/><circle class="pcr-fill" cx="40" cy="40" r="32" data-pct="78"/></svg><span class="pc-num" data-target="78">0</span></div><div class="pc-label">Disiplin</div></div>
+          </div>
+          <div class="progres-quote">"Every small step today builds the successful entrepreneur of tomorrow."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-ornament">
+      <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="fGold" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="transparent"/><stop offset="100%" stop-color="#d4af7a"/></linearGradient></defs>
+        <line x1="0" y1="10" x2="160" y2="10" stroke="url(#fGold)" stroke-width="0.8"/>
+        <circle cx="200" cy="10" r="3" fill="#d4af7a"/>
+        <line x1="240" y1="10" x2="400" y2="10" stroke="url(#fGold)" stroke-width="0.8"/>
+      </svg>
+    </div>
+    <p class="footer-name">Devira Meireditha Luis Cahyani</p>
+    <p class="footer-sub">SMK Negeri 7 Semarang · XI SIJA 3</p>
+    <p class="footer-copy">KIK Portfolio Website · © 2026 All Rights Reserved</p>
+  </footer>
+
+</div><!-- /#main-site -->
+
+<!-- ── Memories Modal ── -->
+<div id="memories-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-panel">
+    <button class="modal-close" id="memories-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-label">Memories</div>
+    <h2 class="modal-title">My Journey</h2>
+    <div class="memories-timeline" id="memories-timeline"></div>
+  </div>
+</div>
+
+<!-- ── Find Me Modal ── -->
+<div id="findme-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-panel modal-panel--sm">
+    <button class="modal-close" id="findme-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-label">Connect</div>
+    <h2 class="modal-title">Find Me</h2>
+    <div class="findme-grid">
+      <a href="mailto:meiluishy@gmail.com" class="findme-card">
+        <i data-lucide="mail"></i><span>Email</span>
+      </a>
+      <a href="https://wa.me/6287894476456" target="_blank" rel="noopener" class="findme-card">
+        <i data-lucide="message-circle"></i><span>WhatsApp</span>
+      </a>
+      <a href="https://instagram.com/deplupiss_" target="_blank" rel="noopener" class="findme-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://discord.com/users/devira0157_24915" target="_blank" rel="noopener" class="findme-card">
+        <i data-lucide="headphones"></i><span>Discord</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Toast ── -->
+<div class="kik-toast" id="kik-toast"></div>
+
+<script src="kik.js"></script>
+</body>
+</html>
